@@ -109,19 +109,26 @@ void printHighestPaid(vector<Person> &employees)
 void separateAndSave(vector<Person> &employees, vector<string> &companyNames)
 {   
    float totalPay = 0.00;
-   for (int i = 0; i < companyNames.size(); i++)
+   
+  for (int i = 0; i < companyNames.size(); i++)
     {
       ofstream outData;
       outData.open(companyNames[i] + ".txt");
+    
       for (int k = 0; k < employees.size(); k++)
       {
-        //totalPay += employees[k].totalPay();
-        if (companyNames[i] == employees[k].getCompanyName())  // if employees company name at "i" is equivalant to company name at "i"
+        
+        if (companyNames[i] == employees[k].getCompanyName())  
           {
             outData <<  employees[k].fullName() << " " << employees[k].getEmployeeId() << " " << employees[k].getCompanyName() << " " << fixed << setprecision(2) << employees[k].totalPay() << endl;
+              
+              totalPay += employees[k].totalPay();   // last enrty only    
+                      
           }
+       
       }
       outData << "Total $" << totalPay << endl;
+      totalPay = 0.00;
       outData.close();
     } 
 }
