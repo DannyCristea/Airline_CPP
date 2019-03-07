@@ -1,11 +1,11 @@
 #include "person.cpp"
 #include <iostream>
-//#include <algorithm>  // maybe not needed
+#include <algorithm>  // maybe not needed
 #include <fstream>
 #include <string>
 #include <vector>
 #include <iomanip>
-//#include <list>
+#include <list>
 
 using namespace std;
 
@@ -21,10 +21,9 @@ int main()
   vector <string> companyNames;
 
   readData(employees);
-  //printHighestPaid(employees);
-  
+  printHighestPaid(employees);
   getCompanies(employees, companyNames);    // dont need to call this fuction
-  separateAndSave(employees, companyNames);
+  separateAndSave(employees, companyNames); 
 
 	return 0;
 }
@@ -70,7 +69,7 @@ void getCompanies(vector<Person> &employees, vector<string> &companyNames)
   { 
     temp = employees[i].getCompanyName();
     companyNames.push_back(temp);
-  // cout << " " << companyNames[i] << endl;
+    //cout << companyNames[i] << endl;  // test to see it compayNames vector holds the correct values.
   }
   
   for (unsigned i = 0; i < companyNames.size(); ++i)
@@ -84,6 +83,11 @@ void getCompanies(vector<Person> &employees, vector<string> &companyNames)
       }
     }
   }
+   //*******************************************// test loop to see if companyNames holds the correct values.
+   // for (int i = 0; i < companyNames.size(); i++)
+   // {
+   //   cout << companyNames[i] << endl;
+   // }
 }
 
 void printHighestPaid(vector<Person> &employees)
@@ -103,13 +107,21 @@ void printHighestPaid(vector<Person> &employees)
 }
 
 void separateAndSave(vector<Person> &employees, vector<string> &companyNames)
-{  
-    for (int i = 0; i < employees.size(); i++)
+{   
+   float totalPay = 0.00;
+   for (int i = 0; i < companyNames.size(); i++)
     {
-      if (employees)
-    //  ofstream outData;
-    //  outData.open(companyNames[i]);
-     // cout << employees[i].fullName() << " " << employees[i].getEmployeeId() << " " << companyNames[i] << " " << employees[i].totalPay() << endl;
-    }
-
+      ofstream outData;
+      outData.open(companyNames[i] + ".txt");
+      for (int k = 0; k < employees.size(); k++)
+      {
+        //totalPay += employees[k].totalPay();
+        if (companyNames[i] == employees[k].getCompanyName())  // if employees company name at "i" is equivalant to company name at "i"
+          {
+            outData <<  employees[k].fullName() << " " << employees[k].getEmployeeId() << " " << employees[k].getCompanyName() << " " << fixed << setprecision(2) << employees[k].totalPay() << endl;
+          }
+      }
+      outData << "Total $" << totalPay << endl;
+      outData.close();
+    } 
 }

@@ -80,5 +80,4 @@ float Person::totalPay()
 string Person::fullName()
 {
     return firstName + " " + lastName;
-    //return getFirstName() + " " getLastName();
 }
