@@ -16,20 +16,34 @@ private:
     float  payRate;
 
 public:
-    Person();
-    void   setFirstName(string fName);
-    string getFirstName();
-    void   setLastName(string lName);
-    string getLastName();
-    void   setEmployeeId(int id);
-    int    getEmployeeId();
-    void   setCompanyName(string coName);
-    string getCompanyName();
-    void   setPayRate(float rate);
-    float  getPayRate();
-    void   setHoursWorked(float hours);
-    float  getHoursWorked();
-    float  totalPay();
-    string fullName();
+    inline Person();
+    
+    void inline setFirstName(string fName);
+    
+    string inline getFirstName();
+    
+    void inline setLastName(string lName);
+    
+    string inline getLastName();
+    
+    void inline setEmployeeId(int id);
+   
+    int inline getEmployeeId();
+    
+    void inline setCompanyName(string coName);
+    
+    string inline getCompanyName();
+    
+    void inline setPayRate(float rate);
+    
+    float inline getPayRate();
+    
+    void inline setHoursWorked(float hours);
+    
+    float inline getHoursWorked();
+    
+    float inline totalPay();
+    
+    string inline fullName();
 };
 #endif // end person.h
