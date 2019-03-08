@@ -1,11 +1,9 @@
 #include "person.cpp"
 #include <iostream>
-#include <algorithm>  // maybe not needed
 #include <fstream>
 #include <string>
 #include <vector>
 #include <iomanip>
-#include <list>
 
 using namespace std;
 
@@ -22,7 +20,7 @@ int main()
 
   readData(employees);
   printHighestPaid(employees);
-  getCompanies(employees, companyNames);    // dont need to call this fuction
+  getCompanies(employees, companyNames);
   separateAndSave(employees, companyNames); 
 
 	return 0;
@@ -55,11 +53,9 @@ int readData(vector<Person> &employees)
     obj.setPayRate(pay);
     employees.push_back(obj);  // pushes new objects into the emplyee vector dynamically. 
     count++;
-    
-   // cout << first << " " << last << " " << fixed << setprecision(2) << empId << " " << coName << " " << hours << " " << fixed << setprecision(1) << pay << endl;
   }
     inData.close();
-    return count;  // count is 16
+    return count;
 }
 
 void getCompanies(vector<Person> &employees, vector<string> &companyNames)
@@ -108,25 +104,19 @@ void printHighestPaid(vector<Person> &employees)
 
 void separateAndSave(vector<Person> &employees, vector<string> &companyNames)
 {   
-   float totalPay = 0.00;
-   
+  float totalPay = 0.00;
   for (int i = 0; i < companyNames.size(); i++)
     {
       ofstream outData;
       outData.open(companyNames[i] + ".txt");
-    
-      for (int k = 0; k < employees.size(); k++)
-      {
-        
-        if (companyNames[i] == employees[k].getCompanyName())  
+        for (int k = 0; k < employees.size(); k++)
           {
-            outData <<  employees[k].fullName() << " " << employees[k].getEmployeeId() << " " << employees[k].getCompanyName() << " " << fixed << setprecision(2) << employees[k].totalPay() << endl;
-              
-              totalPay += employees[k].totalPay();   // last enrty only    
-                      
+            if (companyNames[i] == employees[k].getCompanyName())  
+              {
+                outData << employees[k].fullName() << setw(5) << employees[k].getEmployeeId() << " " << employees[k].getCompanyName() << " $" << fixed << setprecision(2) << employees[k].totalPay() << endl;
+                totalPay += employees[k].totalPay();     
+              }
           }
-       
-      }
       outData << "Total $" << totalPay << endl;
       totalPay = 0.00;
       outData.close();

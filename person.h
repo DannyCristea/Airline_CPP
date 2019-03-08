@@ -10,12 +10,13 @@ class Person
 private:
     string firstName;
     string lastName;
-    int    employeeID;
+    int employeeID;
     string companyName;
-    float  hoursWorked;
-    float  payRate;
+    float hoursWorked;
+    float payRate;
 
 public:
+    // inline is used to solve my compiler / linker issues. 
     inline Person();
     
     void inline setFirstName(string fName);
