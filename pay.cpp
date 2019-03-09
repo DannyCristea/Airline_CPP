@@ -113,7 +113,7 @@ void separateAndSave(vector<Person> &employees, vector<string> &companyNames)
           {
             if (companyNames[i] == employees[k].getCompanyName())  
               {
-                outData << employees[k].fullName() << setw(5) << employees[k].getEmployeeId() << " " << employees[k].getCompanyName() << " $" << fixed << setprecision(2) << employees[k].totalPay() << endl;
+                outData << left << setw(20) << employees[k].fullName() << " " << employees[k].getEmployeeId() << " " << employees[k].getCompanyName() << " $" << fixed << setprecision(2) << employees[k].totalPay() << endl;
                 totalPay += employees[k].totalPay();     
               }
           }
