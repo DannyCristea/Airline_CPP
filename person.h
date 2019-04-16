@@ -15,36 +15,35 @@ private:
     float hoursWorked;
     float payRate;
 
-public:
-    // inline is used to solve my compiler / linker issues. 
-    inline Person();
+public: 
+    Person();
     
-    void inline setFirstName(string fName);
+    void setFirstName(string fName);
     
-    string inline getFirstName();
+    string getFirstName();
     
-    void inline setLastName(string lName);
+    void setLastName(string lName);
     
-    string inline getLastName();
+    string getLastName();
     
-    void inline setEmployeeId(int id);
+    void setEmployeeId(int id);
    
-    int inline getEmployeeId();
+    int getEmployeeId();
     
-    void inline setCompanyName(string coName);
+    void setCompanyName(string coName);
     
-    string inline getCompanyName();
+    string getCompanyName();
     
-    void inline setPayRate(float rate);
+    void setPayRate(float rate);
     
-    float inline getPayRate();
+    float getPayRate();
     
-    void inline setHoursWorked(float hours);
+    void setHoursWorked(float hours);
     
-    float inline getHoursWorked();
+    float getHoursWorked();
     
-    float inline totalPay();
+    float totalPay();
     
-    string inline fullName();
+    string fullName();
 };
 #endif // end person.h
